@@ -1,23 +1,88 @@
+.heatmap {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.heatmap__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
 .heatmap__title {
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
   font-size: var(--text-sm);
-  color: var(--dark-text-secondary);
+  color: var(--dark-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+.heatmap__subtitle {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--dark-text-muted);
+  margin-top: 2px;
+}
+
+.heatmap__stats-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  color: var(--color-success);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-bold);
+}
+
+.heatmap__stats-pct {
+  opacity: 0.8;
+  font-size: 0.65rem;
+}
+
+/* Progress bar */
+.heatmap__progress-bar-wrap {
   margin-bottom: var(--space-4);
 }
 
+.heatmap__progress-bar {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.heatmap__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-success) 0%, var(--landing-accent-yellow) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.6s ease;
+}
+
+/* Responsive 6-column mobile grid, 10-column tablet/desktop */
 .heatmap__grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: var(--space-2);
+  gap: 6px;
   margin-bottom: var(--space-4);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .heatmap__grid {
     grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
   }
 }
 
@@ -25,6 +90,7 @@
   aspect-ratio: 1;
   border-radius: var(--radius-sm);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: var(--text-xs);
@@ -32,84 +98,122 @@
   transition: all var(--transition-fast);
   text-decoration: none;
   position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .heatmap__cell:hover {
-  transform: scale(1.15);
-  z-index: 1;
+  transform: scale(1.12);
+  z-index: 2;
 }
 
+/* Completed Days */
 .heatmap__cell--completed {
-  background: rgba(74, 222, 128, 0.25);
+  background: rgba(74, 222, 128, 0.22);
   color: var(--color-success);
-  border: 1px solid rgba(74, 222, 128, 0.3);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.15);
 }
 
 .heatmap__cell--completed:hover {
-  background: rgba(74, 222, 128, 0.4);
-  box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+  background: rgba(74, 222, 128, 0.35);
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
 }
 
+.heatmap__done-dot {
+  font-size: 0.55rem;
+  line-height: 1;
+  margin-top: 1px;
+  font-weight: var(--fw-black);
+}
+
+/* Pending / Today */
 .heatmap__cell--pending {
-  background: rgba(251, 191, 36, 0.2);
-  color: var(--color-warning);
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  background: rgba(255, 214, 0, 0.18);
+  color: var(--landing-accent-yellow);
+  border: 1.5px solid var(--landing-accent-yellow);
+  box-shadow: 0 0 12px rgba(255, 214, 0, 0.3);
   animation: pulse 2s ease-in-out infinite;
 }
 
+.heatmap__today-ping {
+  width: 4px;
+  height: 4px;
+  background: var(--landing-accent-yellow);
+  border-radius: var(--radius-full);
+  margin-top: 1px;
+  box-shadow: 0 0 4px var(--landing-accent-yellow);
+}
+
+/* Missed Days */
 .heatmap__cell--missed {
   background: rgba(248, 113, 113, 0.15);
   color: var(--color-error);
-  border: 1px solid rgba(248, 113, 113, 0.2);
+  border: 1px solid rgba(248, 113, 113, 0.25);
 }
 
+/* Locked / Upcoming Days */
 .heatmap__cell--locked {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.025);
   color: var(--dark-text-muted);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .heatmap__cell--locked:hover {
   background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .heatmap__day-num {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
+  line-height: 1;
 }
 
+/* Legend */
 .heatmap__legend {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: var(--space-1);
 }
 
 .heatmap__legend-item {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-xs);
+  gap: 5px;
+  font-size: 0.7rem;
   color: var(--dark-text-muted);
+  white-space: nowrap;
 }
 
 .heatmap__legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
 }
 
 .heatmap__legend-dot--completed {
-  background: rgba(74, 222, 128, 0.4);
+  background: rgba(74, 222, 128, 0.5);
+  border: 1px solid var(--color-success);
 }
 
 .heatmap__legend-dot--pending {
-  background: rgba(251, 191, 36, 0.4);
+  background: rgba(255, 214, 0, 0.5);
+  border: 1px solid var(--landing-accent-yellow);
 }
 
 .heatmap__legend-dot--missed {
-  background: rgba(248, 113, 113, 0.3);
+  background: rgba(248, 113, 113, 0.5);
+  border: 1px solid var(--color-error);
 }
 
 .heatmap__legend-dot--locked {
   background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }

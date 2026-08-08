@@ -1,78 +1,103 @@
 .streak-card {
   background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(167, 139, 250, 0.05)) !important;
-  border-color: rgba(255, 107, 53, 0.15) !important;
+  border-color: rgba(255, 107, 53, 0.2) !important;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .streak-card__main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-6);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
 }
 
 .streak-card__fire {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .streak-card__fire-emoji {
-  font-size: 3rem;
+  font-size: 2.4rem;
+  line-height: 1;
   animation: pulse 2s ease-in-out infinite;
   filter: drop-shadow(0 0 12px rgba(255, 107, 53, 0.4));
+}
+
+@media (min-width: 768px) {
+  .streak-card__fire-emoji {
+    font-size: 3rem;
+  }
 }
 
 .streak-card__number {
   font-family: var(--font-display);
   font-weight: var(--fw-black);
-  font-size: var(--text-4xl);
+  font-size: var(--text-3xl);
   color: var(--color-streak);
   display: block;
   line-height: 1;
   animation: countUp 0.6s ease;
 }
 
+@media (min-width: 768px) {
+  .streak-card__number {
+    font-size: var(--text-4xl);
+  }
+}
+
 .streak-card__label {
-  font-size: var(--text-sm);
+  font-size: 0.72rem;
   color: var(--dark-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: var(--fw-semibold);
+  display: block;
+  margin-top: 2px;
 }
 
 .streak-card__stats {
   display: flex;
-  gap: var(--space-6);
+  gap: var(--space-4);
+  align-items: center;
 }
 
 .streak-card__stat {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .streak-card__stat-value {
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   color: var(--dark-text-primary);
+  line-height: 1.1;
 }
 
 .streak-card__stat-label {
-  font-size: var(--text-xs);
+  font-size: 0.65rem;
   color: var(--dark-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  margin-top: 2px;
 }
 
 .streak-card__progress-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: var(--space-2);
 }
 
 .streak-card__progress-label {
-  font-size: var(--text-xs);
+  font-size: 0.7rem;
   color: var(--dark-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -80,7 +105,7 @@
 }
 
 .streak-card__progress-value {
-  font-size: var(--text-xs);
+  font-size: 0.72rem;
   color: var(--dark-text-secondary);
   font-family: var(--font-mono);
 }
@@ -88,13 +113,13 @@
 .streak-card__progress-bar {
   height: 6px;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
+  border-radius: var(--radius-full);
   overflow: hidden;
 }
 
 .streak-card__progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--color-streak), var(--color-xp));
-  border-radius: 3px;
+  border-radius: var(--radius-full);
   transition: width 1s ease;
 }
