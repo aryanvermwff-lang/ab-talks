@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import AIChatbot from '../components/AIChatbot';
 import { getDayEntry, dayEntries, socialLinks } from '../data/mockData';
 import './DayView.css';
