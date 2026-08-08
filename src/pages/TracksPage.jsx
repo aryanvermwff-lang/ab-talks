@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -11,6 +11,16 @@ export default function TracksPage() {
   const [enrolledTrackId, setEnrolledTrackId] = useState('t_01');
   const [activeTab, setActiveTab] = useState('curriculum');
   const navigate = useNavigate();
+  const detailRef = useRef(null);
+
+  function handleTrackSelect(track) {
+    setSelectedTrack(track);
+    setActiveTab('curriculum');
+    // Scroll to the top of the detail card after a brief render
+    setTimeout(() => {
+      detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
 
   function handleEnroll(track) {
     setEnrolledTrackId(track.id);
@@ -45,7 +55,7 @@ export default function TracksPage() {
                 borderColor: selectedTrack.id === track.id ? track.color : 'transparent',
                 boxShadow: selectedTrack.id === track.id ? `0 0 15px ${track.color}44` : 'none',
               }}
-              onClick={() => setSelectedTrack(track)}
+              onClick={() => handleTrackSelect(track)}
               id={`tab-${track.id}`}
             >
               <span className="tracks-page__tab-icon">{track.icon}</span>
@@ -61,7 +71,7 @@ export default function TracksPage() {
         </div>
 
         {/* Selected Track Detail Card */}
-        <div className="tracks-page__detail glass-card" style={{ borderColor: `${selectedTrack.color}44` }}>
+        <div ref={detailRef} className="tracks-page__detail glass-card" style={{ borderColor: `${selectedTrack.color}44` }}>
           <div className="tracks-page__detail-header">
             <div className="tracks-page__detail-lead">
               <span className="tracks-page__detail-icon">{selectedTrack.icon}</span>
