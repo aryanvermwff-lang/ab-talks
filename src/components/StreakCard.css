@@ -1,0 +1,100 @@
+.streak-card {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(167, 139, 250, 0.05)) !important;
+  border-color: rgba(255, 107, 53, 0.15) !important;
+}
+
+.streak-card__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.streak-card__fire {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.streak-card__fire-emoji {
+  font-size: 3rem;
+  animation: pulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 107, 53, 0.4));
+}
+
+.streak-card__number {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: var(--text-4xl);
+  color: var(--color-streak);
+  display: block;
+  line-height: 1;
+  animation: countUp 0.6s ease;
+}
+
+.streak-card__label {
+  font-size: var(--text-sm);
+  color: var(--dark-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--fw-semibold);
+}
+
+.streak-card__stats {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.streak-card__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.streak-card__stat-value {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-xl);
+  color: var(--dark-text-primary);
+}
+
+.streak-card__stat-label {
+  font-size: var(--text-xs);
+  color: var(--dark-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.streak-card__progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.streak-card__progress-label {
+  font-size: var(--text-xs);
+  color: var(--dark-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--fw-medium);
+}
+
+.streak-card__progress-value {
+  font-size: var(--text-xs);
+  color: var(--dark-text-secondary);
+  font-family: var(--font-mono);
+}
+
+.streak-card__progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.streak-card__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-streak), var(--color-xp));
+  border-radius: 3px;
+  transition: width 1s ease;
+}

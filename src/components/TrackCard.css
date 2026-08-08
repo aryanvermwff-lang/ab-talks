@@ -1,0 +1,162 @@
+.track-card {
+  background: var(--landing-bg);
+  border: 1px solid var(--landing-card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  animation: slideUp 0.6s ease both;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+
+.track-card__link-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.track-card__image {
+  position: relative;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.track-card__image .numbered-badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+}
+
+.track-card__icon {
+  font-size: 4rem;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  animation: float 3s ease-in-out infinite;
+}
+
+.track-card__content {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.track-card__name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--landing-text-primary);
+}
+
+.track-card__name--accent {
+  margin-bottom: var(--space-2);
+}
+
+.track-card__tagline {
+  font-weight: var(--fw-bold);
+  font-size: var(--text-sm);
+  color: var(--landing-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.track-card__description {
+  font-size: var(--text-sm);
+  color: var(--landing-text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+
+.track-card__tags {
+  margin-bottom: var(--space-4);
+}
+
+.track-card__tags-label {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--landing-text-secondary);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.track-card__tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.track-card__tag {
+  padding: var(--space-1) var(--space-2);
+  background: var(--landing-surface);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-medium);
+  color: var(--landing-text-secondary);
+}
+
+.track-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--landing-card-border);
+  margin-top: auto;
+}
+
+.track-card__participants {
+  font-size: var(--text-xs);
+  color: var(--landing-text-secondary);
+}
+
+.track-card__difficulty {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.track-card__difficulty[data-level="intermediate"] {
+  background: rgba(251, 191, 36, 0.12);
+  color: var(--color-warning);
+}
+
+.track-card__difficulty[data-level="advanced"] {
+  background: rgba(248, 113, 113, 0.12);
+  color: var(--color-error);
+}
+
+.track-card__action {
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  text-align: center;
+}
+
+.track-card__cta {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.track-card:hover .track-card__cta {
+  transform: translateX(4px);
+}

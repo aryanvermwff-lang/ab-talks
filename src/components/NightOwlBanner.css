@@ -1,0 +1,32 @@
+.night-owl-banner {
+  background: linear-gradient(90deg, rgba(139, 127, 255, 0.12), rgba(167, 139, 250, 0.08));
+  border-bottom: 1px solid rgba(139, 127, 255, 0.15);
+  animation: slideDown 0.4s ease;
+}
+
+.night-owl-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+}
+
+.night-owl-banner__text {
+  font-size: var(--text-xs);
+  color: var(--nightowl-text);
+}
+
+.night-owl-banner__text strong {
+  color: var(--nightowl-accent);
+}
+
+.night-owl-banner__close {
+  color: var(--dark-text-muted);
+  font-size: var(--text-lg);
+  padding: var(--space-1);
+  transition: color var(--transition-fast);
+}
+
+.night-owl-banner__close:hover {
+  color: var(--dark-text-primary);
+}
